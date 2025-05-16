@@ -21,8 +21,8 @@ const client = new MongoClient(uri, {
 
 const run = async () => {
   try {
-    // await client.connect();
-    // const userCollection = client.db("pracUserdb").collection("pracUser");
+    await client.connect();
+    const userCollection = client.db("pracUserdb").collection("pracUser");
 
     app.get("/users", async (req, res) => {
       const result = await userCollection.find().toArray();
@@ -70,7 +70,7 @@ const run = async () => {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-  res.send("hello users");
+  res.send("hello vercel");
 });
 
 app.listen(port, () => {
